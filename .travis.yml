@@ -5,7 +5,6 @@ python:
 
 before_install:
   - PWD=`pwd`
-  - mkdir $PWD
   - echo "Getting test cases..."
   - TESTCASES=$PWD/testcases
   - git clone https://github.com/mikej888/provtoolsuite-testcases $TESTCASES
