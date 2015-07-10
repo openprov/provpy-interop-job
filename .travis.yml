@@ -24,10 +24,14 @@ before_install:
   - echo "PROV_TEST_CASES_DIR=$BASE/testcases" > config.properties
   - echo "PROVPY_SCRIPTS_DIR=$BASE/ProvPy/scripts" >> config.properties
   - echo "PROV_LOCAL_CONFIG_DIR=$BASE/test-harness/localconfig" >> config.properties
+  - cat localconfig.properties
   - mkdir localconfig
   - python prov_interop/customise-config.py config localconfig config.properties
   - echo "Test configuration..."
+  - pwd
+  - ls localconfig
   - cat localconfig/*
 
 script: 
+  - pwd
   - nosetests -v prov_interop.interop_tests.test_provpy
