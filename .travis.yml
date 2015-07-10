@@ -32,7 +32,7 @@ before_install:
 # Package ProvPy
   - echo "PROVPY_SCRIPTS_DIR/prov-convert=prov-convert" >> config.properties
   - echo "PROVPY_SCRIPTS_DIR/prov-compare=prov-compare" >> config.properties
-  - cat localconfig.properties
+  - cat config.properties
   - mkdir localconfig
   - python prov_interop/customise-config.py config localconfig config.properties
   - echo "Test configuration..."

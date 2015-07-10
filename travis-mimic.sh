@@ -22,7 +22,7 @@ echo "Creating local configuration files..."
 echo "PROV_TEST_CASES_DIR=$TRAVIS_BUILD_DIR/testcases" > config.properties
 echo "PROVPY_SCRIPTS_DIR=$TRAVIS_BUILD_DIR/ProvPy/scripts" >> config.properties
 echo "PROV_LOCAL_CONFIG_DIR=$TRAVIS_BUILD_DIR/test-harness/localconfig" >> config.properties
-cat localconfig.properties
+cat config.properties
 mkdir localconfig
 python prov_interop/customise-config.py config localconfig config.properties
 echo "Test configuration..."
