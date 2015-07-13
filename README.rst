@@ -1,14 +1,22 @@
 Southampton Provenance Tool Suite ProvPy Interoperability Tests
 ===============================================================
 
-Interoperability test job for the `Southampton Provenance Suite <https://provenance.ecs.soton.ac.uk>`_'s
-ProvPy tool:
+`ProvPy <https://github.com/trungdong/prov>`_ interoperability test job.
 
 .. image:: https://travis-ci.org/mikej888/provtoolsuite-provpy-interop-job.svg
   :target: https://travis-ci.org/mikej888/provtoolsuite-provpy-interop-job
   :alt: TravisCI Build Status
 
-This tests `ProvPy <https://github.com/trungdong/prov>`_ upon canonical `test cases <https://github.com/mikej888/provtoolsuite-testcases>`_ using an `interoperability test harness <https://github.com/mikej888/provtoolsuite-interop-test-harness>`_.
+The test job:
+
+* Gets ProvPy
+* Gets canonical `test cases <https://github.com/mikej888/provtoolsuite-testcases>`_
+* Gets `interoperability test harness <https://github.com/mikej888/provtoolsuite-interop-test-harness>`_.
+* Configures interoperability test harness.
+* Runs interoperability tests to validate ProvPy conversions done using prov-convert. Conversions are validated using ProvPy's prov-compare script.
+
+Author
+------
 
 Developed by `The Software Sustainability Institute <http://www.software.ac.uk>`_ and the `Provenance Tool Suite <http://provenance.ecs.soton.ac.uk/>`_ team at `Electronics and Computer Science <http://www.ecs.soton.ac.uk>`_ at the `University of Southampton <http://www.soton.ac.uk>`_.
 
