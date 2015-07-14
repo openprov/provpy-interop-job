@@ -27,7 +27,8 @@ before_install:
 #  - git clone https://github.com/trungdong/prov ProvPy
   - git clone https://github.com/mikej888/prov ProvPy
   - cd ProvPy
-#  - git checkout 1.3.2
+# Worked when commented out - so uncomment
+  - git checkout 1.3.2
   - pip list
   - python setup.py install
   - which pip
