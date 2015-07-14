@@ -34,6 +34,7 @@ before_install:
   - pip list
 # Try explicit install
   - pip install six
+  - pip list
   - ./scripts/prov-convert --version
   - cd ..
 # Package ProvPy
