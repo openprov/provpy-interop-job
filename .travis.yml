@@ -25,7 +25,6 @@ addons:
 before_install:
   - echo "Getting test cases..."
   - git clone https://github.com/mikej888/provtoolsuite-testcases testcases
-  - echo "Installing ProvPy dependencies..."
   - echo "Getting ProvPy..."
 # Source ProvPy
   - git clone https://github.com/trungdong/prov ProvPy
