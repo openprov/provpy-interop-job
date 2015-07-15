@@ -6,7 +6,7 @@
 
 The Travis CI test job:
 
-* Gets ProvPy from GitHub (stable 1.3.2 tag).
+* Gets ProvPy from GitHub (latest master version).
 * Gets canonical [test cases](https://github.com/prov-suite/testcases) from GitHub (stable master branch).
 * Gets [interoperability test harness](https://github.com/prov-suite/interop-test-harness) from GitHub (stable master branch).
 * Configures interoperability test harness.
