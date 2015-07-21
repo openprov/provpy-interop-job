@@ -16,12 +16,15 @@ python:
   - 2.7
   - 3.4
 
+addons:
+  apt:
+    packages:
+    - zlib1g-dev
+    - libxslt1-dev
+
 before_install:
   - echo "Getting test cases..."
   - git clone https://github.com/prov-suite/testcases testcases
-  - echo "Installing ProvPy dependencies..."
-  - sudo apt-get -y install zlib1g-dev
-  - sudo apt-get -y install libxslt1-dev
   - echo "Getting ProvPy..."
 # Source ProvPy
   - git clone https://github.com/trungdong/prov ProvPy
