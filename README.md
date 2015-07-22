@@ -2,13 +2,13 @@
 
 [ProvPy](https://github.com/trungdong/prov) interoperability test job.
 
-[![Build Status](https://travis-ci.org/mikej888/provtoolsuite-provpy-interop-job.svg)](https://travis-ci.org/mikej888/provtoolsuite-provpy-interop-job)
+[![Build Status](https://travis-ci.org/prov-suite/provpy-interop-job.svg)](https://travis-ci.org/prov-suite/provpy-interop-job)
 
 The Travis CI test job:
 
 * Gets ProvPy from GitHub (latest master version).
-* Gets canonical [test cases](https://github.com/mikej888/provtoolsuite-testcases) from GitHub (stable master branch).
-* Gets [interoperability test harness](https://github.com/mikej888/provtoolsuite-interop-test-harness) from GitHub (stable master branch).
+* Gets canonical [test cases](https://github.com/prov-suite/testcases) from GitHub (stable master branch).
+* Gets [interoperability test harness](https://github.com/prov-suite/interop-test-harness) from GitHub (stable master branch).
 * Configures interoperability test harness.
 * Runs interoperability tests to validate ProvPy conversions done using prov-convert. Conversions are validated using ProvPy's prov-compare script.
 
