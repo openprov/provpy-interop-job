@@ -2,12 +2,11 @@
 #
 # This job assumes the following packages have been installed (these
 # are provided by the Travis CI build environment,
-# http://docs.travis-ci.com/user/ci-environment):
+# http://docs.travis-ci.com/user/ci-environment:
 #
 # git
 # curl
-# Python 2 and 3
-## ProvPy prerequisites
+# python 2.7 and 3.4
 # graphviz 
 
 language: python
@@ -25,40 +24,25 @@ addons:
 before_install:
   - echo "Getting test cases..."
   - git clone https://github.com/prov-suite/testcases testcases
-  - echo "Getting ProvPy..."
-# Source ProvPy
+  - echo "Getting ProvPy source..."
   - git clone https://github.com/trungdong/prov ProvPy
   - cd ProvPy
   - python setup.py install
   - ./scripts/prov-convert --version
   - ./scripts/prov-compare --version
+  - PROVPY_CONVERT="python $TRAVIS_BUILD_DIR/ProvPy/scripts/prov-convert"
+  - PROVPY_COMPARE="python $TRAVIS_BUILD_DIR/ProvPy/scripts/prov-compare"
   - cd ..
-# Package ProvPy
-#  - pip install prov
-#  - prov-convert --version
-#  - prov-compare --version
   - echo "Getting test harness..."
   - git clone https://github.com/prov-suite/interop-test-harness test-harness
   - cd test-harness
   - pip install -r requirements.txt
-  - echo "Creating local test harness configuration files..."
-  - echo "PROV_TEST_CASES_DIR=$TRAVIS_BUILD_DIR/testcases" > config.properties
-  - echo "PROV_LOCAL_CONFIG_DIR=$TRAVIS_BUILD_DIR/test-harness/localconfig" >> config.properties
-# Source ProvPy
-  - echo "PROVPY_CONVERT_EXE=python" >> config.properties
-  - echo "PROVPY_COMPARE_EXE=python" >> config.properties
-  - echo "PROVPY_SCRIPTS_DIR=$TRAVIS_BUILD_DIR/ProvPy/scripts" >> config.properties
-# Package ProvPy
-#  - echo "PROVPY_CONVERT_EXE=prov-convert" >> config.properties
-# Since prov-convert is executable, blank out the script name argument
-#  - echo "PROVPY_SCRIPTS_DIR/prov-convert,=" >> config.properties
-#  - echo "PROVPY_COMPARE_EXE=prov-compare" >> config.properties
-# Since prov-convert is executable, blank out the script name argument
-#  - echo "PROVPY_SCRIPTS_DIR/prov-compare,=" >> config.properties
-  - cat config.properties
-  - mkdir localconfig
-  - python prov_interop/customise-config.py config localconfig config.properties
-  - echo "Test configuration..."
+  - echo "Creating local configuration..."
+  - cp -r config localconfig
+  - python prov_interop/set-yaml-value.py localconfig/harness.yaml test-cases="$TRAVIS_BUILD_DIR/testcases"
+# Default configuration assumes ProvPy binaries - override executables
+  - python prov_interop/set-yaml-value.py localconfig/provpy.yaml ProvPy.executable="$PROVPY_CONVERT"
+  - python prov_interop/set-yaml-value.py localconfig/harness.yaml comparators.ProvPyComparator.executable="$PROVPY_COMPARE"
   - cat localconfig/*
 
 script: 
