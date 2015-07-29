@@ -39,10 +39,10 @@ before_install:
   - pip install -r requirements.txt
   - echo "Creating local configuration..."
   - cp -r config localconfig
-  - python prov_interop/set-yaml-value.py localconfig/harness.yaml test-cases="$TRAVIS_BUILD_DIR/testcases"
+  - python prov_interop/set_yaml_value.py localconfig/harness.yaml test-cases="$TRAVIS_BUILD_DIR/testcases"
 # Default configuration assumes ProvPy binaries - override executables
-  - python prov_interop/set-yaml-value.py localconfig/provpy.yaml ProvPy.executable="$PROVPY_CONVERT"
-  - python prov_interop/set-yaml-value.py localconfig/harness.yaml comparators.ProvPyComparator.executable="$PROVPY_COMPARE"
+  - python prov_interop/set_yaml_value.py localconfig/provpy.yaml ProvPy.executable="$PROVPY_CONVERT"
+  - python prov_interop/set_yaml_value.py localconfig/harness.yaml comparators.ProvPyComparator.executable="$PROVPY_COMPARE"
   - cat localconfig/*
 
 script: 
