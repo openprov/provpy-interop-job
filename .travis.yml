@@ -35,9 +35,9 @@ before_install:
   - git clone https://github.com/prov-suite/interop-test-harness test-harness
   - cd test-harness
   - pip install -r requirements.txt
-  - echo "Downloading and installing ProvToolbox 0.7.1"
-  - wget https://repo1.maven.org/maven2/org/openprovenance/prov/toolbox/0.7.1/toolbox-0.7.1-release.zip
-  - unzip toolbox-0.7.1-release.zip
+  - echo "Downloading and installing ProvToolbox from provenance.ecs.soton.ac.uk"
+  - wget https://provenance.ecs.soton.ac.uk/tools/provconvert-0.7.2-SNAPSHOT-release.zip
+  - unzip provconvert-0.7.2-SNAPSHOT-release.zip
   - export PATH=$PATH:$PWD/ProvToolbox/bin/
   - echo "Creating local configuration..."
   - cp -r config localconfig
