@@ -29,20 +29,21 @@ before_install:
   - cd ProvPy
   - python setup.py install
   - ./scripts/prov-convert --version
-  - ./scripts/prov-compare --version
   - PROVPY_CONVERT="python $TRAVIS_BUILD_DIR/ProvPy/scripts/prov-convert"
-  - PROVPY_COMPARE="python $TRAVIS_BUILD_DIR/ProvPy/scripts/prov-compare"
   - cd ..
   - echo "Getting test harness..."
   - git clone https://github.com/prov-suite/interop-test-harness test-harness
   - cd test-harness
   - pip install -r requirements.txt
+  - echo "Downloading and installing ProvToolbox 0.7.1"
+  - wget https://repo1.maven.org/maven2/org/openprovenance/prov/toolbox/0.7.1/toolbox-0.7.1-release.zip
+  - unzip toolbox-0.7.1-release.zip
+  - export PATH=$PATH:$PWD/ProvToolbox/bin/
   - echo "Creating local configuration..."
   - cp -r config localconfig
   - python prov_interop/set_yaml_value.py localconfig/harness.yaml test-cases="$TRAVIS_BUILD_DIR/testcases"
 # Default configuration assumes ProvPy binaries - override executables
   - python prov_interop/set_yaml_value.py localconfig/provpy.yaml ProvPy.executable="$PROVPY_CONVERT"
-  - python prov_interop/set_yaml_value.py localconfig/harness.yaml comparators.ProvPyComparator.executable="$PROVPY_COMPARE"
   - cat localconfig/*
 
 script: 
