@@ -27,8 +27,8 @@ from __future__ import (absolute_import, division, print_function,
 
 from nose.tools import istest
 
-from prov_interop.provpy.converter import ProvPyConverter
 from prov_interop.interop_tests.test_converter import ConverterTestCase
+from prov_interop_provpy.converter import ProvPyConverter
 
 @istest
 class ProvPyTestCase(ConverterTestCase):
