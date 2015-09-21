@@ -38,7 +38,7 @@ class ProvPyTestCase(ConverterTestCase):
   """Interoperability tests for ProvPy ``prov-convert``.
  
   Its configuration, loaded via
-  :meth:`prov_interop.interop_tests.test_converter.ConverterTestCase.configure`,
+  :meth:`prov_interop.interop_tests.test_converter.ConverterTestCase.get_configuration`,
   is expected to be in a YAML file: 
   
   - Either provided as the value of a ``ProvPy`` key in the
@@ -76,14 +76,14 @@ class ProvPyTestCase(ConverterTestCase):
   def setUp(self):
     super(ProvPyTestCase, self).setUp()
     self.converter = ProvPyConverter()
-    default_config_file = os.path.join(
+    config_file = os.path.join(
       os.path.dirname(os.path.abspath(inspect.getfile(
         inspect.currentframe()))), ProvPyTestCase.DEFAULT_CONFIGURATION_FILE)
-
-    super(ProvPyTestCase, self).configure(
+    config = super(ProvPyTestCase, self).get_configuration(
       ProvPyTestCase.CONFIGURATION_KEY,
       ProvPyTestCase.CONFIGURATION_FILE_ENV,
-      default_config_file)
+      config_file)
+    self.converter.configure(config)
 
   def tearDown(self):
     super(ProvPyTestCase, self).tearDown()
