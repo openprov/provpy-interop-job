@@ -22,28 +22,22 @@ addons:
     - libxslt1-dev
 
 before_install:
+  - echo "Getting test harness..."
+  - git clone https://github.com/mikej888/interop-test-harness
+  - cd interop-test-harness
+  - git checkout package
+  - source scripts/install-prov-interop-comparator.sh
+  - python setup.py install
+  - cd ..
   - echo "Getting test cases..."
-  - git clone https://github.com/prov-suite/testcases testcases
+  - git clone https://github.com/prov-suite/testcases
   - echo "Getting ProvPy source..."
   - git clone https://github.com/trungdong/prov ProvPy
   - cd ProvPy
   - python setup.py install
-  - ./scripts/prov-convert --version
-  - ./scripts/prov-compare --version
-  - PROVPY_CONVERT="python $TRAVIS_BUILD_DIR/ProvPy/scripts/prov-convert"
-  - PROVPY_COMPARE="python $TRAVIS_BUILD_DIR/ProvPy/scripts/prov-compare"
+  - prov-convert --version
+  - prov-compare --version
   - cd ..
-  - echo "Getting test harness..."
-  - git clone https://github.com/prov-suite/interop-test-harness test-harness
-  - cd test-harness
-  - pip install -r requirements.txt
-  - echo "Creating local configuration..."
-  - cp -r config localconfig
-  - python prov_interop/set_yaml_value.py localconfig/harness.yaml test-cases="$TRAVIS_BUILD_DIR/testcases"
-# Default configuration assumes ProvPy binaries - override executables
-  - python prov_interop/set_yaml_value.py localconfig/provpy.yaml ProvPy.executable="$PROVPY_CONVERT"
-  - python prov_interop/set_yaml_value.py localconfig/harness.yaml comparators.ProvPyComparator.executable="$PROVPY_COMPARE"
-  - cat localconfig/*
 
 script: 
   - nosetests -v prov_interop.interop_tests.test_provpy
