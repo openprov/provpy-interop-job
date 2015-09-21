@@ -24,7 +24,7 @@ setup(
     package_dir={
         'prov_interop_provpy': 'prov_interop_provpy'
     },
-    data_files=[('prov_interop_provpy/interop_tests', ['config/provpy.yaml'])],
+    data_files=[('prov_interop_provpy/interop_tests', ['prov_interop_provpy/interop_tests/provpy.yaml'])],
     include_package_data=True,
     install_requires=requirements,
     license="Apache Software License",
