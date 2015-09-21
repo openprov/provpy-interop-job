@@ -40,4 +40,4 @@ before_install:
   - cd ..
 
 script: 
-  - nosetests -v prov_interop_provpy.interop_tests.test_provpy
+  - nosetests prov_interop_provpy.interop_tests.test_provpy
