@@ -44,6 +44,9 @@ before_install:
   - prov-compare --version
   - cd ..
 
+install:
+  - python setup.py install
+  
 script: 
   - echo $TEST_TYPE
   - echo nosetests prov_interop_provpy.$TEST_TYPE
