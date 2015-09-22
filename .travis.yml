@@ -18,7 +18,7 @@ python:
 env:
   matrix:
     - TEST_TYPE=tests
-    - TEST_TYPE=interop_tests
+#    - TEST_TYPE=interop_tests
 
 addons:
   apt:
@@ -45,4 +45,6 @@ before_install:
   - cd ..
 
 script: 
+  - echo $TEST_TYPE
+  - echo nosetests prov_interop_provpy.$TEST_TYPE
   - nosetests prov_interop_provpy.$TEST_TYPE > log.txt
