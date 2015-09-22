@@ -17,8 +17,8 @@ python:
 
 env:
   matrix:
-    - TEST_TYPE=tests
-#    - TEST_TYPE=interop_tests
+    - TEST_RUN="-v prov_interop_provpy/tests"
+    - TEST_RUN="prov_interop_provpy/interop_tests > log.txt"
 
 addons:
   apt:
@@ -48,6 +48,4 @@ install:
   - python setup.py install
   
 script: 
-  - nosetests prov_interop_provpy.tests
-  - pip list | grep prov
-  - nosetests prov_interop_provpy.$TEST_TYPE > log.txt
+  - nosetests $TEST_RUN
